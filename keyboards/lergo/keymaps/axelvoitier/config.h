@@ -110,9 +110,11 @@
     #define SPLIT_MODS_ENABLE
 #endif
 
+// https://docs.qmk.fm/#/tap_hold
 #undef TAPPING_TERM
-#define TAPPING_TERM 300
-#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_TERM 200
+#define PERMISSIVE_HOLD
+// #define IGNORE_MOD_TAP_INTERRUPT
 // #define TAPPING_FORCE_HOLD
 
 #define NO_AUTO_SHIFT_ALPHA
