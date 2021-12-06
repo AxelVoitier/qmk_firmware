@@ -18,7 +18,8 @@ enum layer_names {
 };
 
 enum {
-    TD_CTL_MEDIA
+    TD_CTL_MEDIA,
+    TD_NUM_PRN
 };
 
 bool is_gui_tab_active = false;
@@ -30,22 +31,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y , RGUI_T(KC_COLN),
                KC_A , LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_G ,                                                                                  KC_M , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I),        KC_O ,
                KC_Z ,        KC_X ,        KC_C ,        KC_D ,        KC_V ,                                                                                  KC_K ,        KC_H ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
-                      TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(  SYM2, KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
-                                                                                                LT(NUM, KC_TAB), LT(SHORT, KC_BSPC)
+                      TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(SHORT,  KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
+                                                                                                LT(NUM, KC_TAB), LT( SYM2, KC_BSPC)
     ),
     [COLEMAK] = LAYOUT_3x5_1x2u_2x1u(
         LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_G ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y , RGUI_T(KC_COLN),
                KC_A , LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_D ,                                                                                  KC_H , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I),        KC_O ,
                KC_Z ,        KC_X ,        KC_C ,        KC_V ,        KC_B ,                                                                                  KC_K ,        KC_M ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
-                      TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(  SYM2, KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
-                                                                                                LT(NUM, KC_TAB), LT(SHORT, KC_BSPC)
+                      TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(SHORT,  KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
+                                                                                                LT(NUM, KC_TAB), LT( SYM2, KC_BSPC)
     ),
     [QWERTY] = LAYOUT_3x5_1x2u_2x1u(
         LGUI_T(KC_Q),        KC_W ,        KC_E ,        KC_R ,        KC_T ,                                                                                  KC_Y ,        KC_U ,        KC_I ,        KC_O ,    RGUI_T(KC_P),
                KC_A , LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F),        KC_G ,                                                                                  KC_H , RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L),        KC_SCLN ,
                KC_Z,         KC_X ,        KC_C ,        KC_V ,        KC_B ,                                                                                  KC_N ,        KC_M ,     KC_COMM ,      KC_DOT ,        KC_SLSH ,
-                     TD(TD_CTL_MEDIA),  KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(  SYM2, KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
-                                                                                                LT(NUM, KC_TAB), LT(SHORT, KC_BSPC)
+                     TD(TD_CTL_MEDIA),  KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(SHORT,  KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
+                                                                                                LT(NUM, KC_TAB), LT( SYM2, KC_BSPC)
     ),
     [MEDIA] = LAYOUT_3x5_1x2u_2x1u(
         KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
@@ -72,11 +73,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
     [NUM] = LAYOUT_3x5_1x2u_2x1u(
-        KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     KC_PMNS,    KC_7,    KC_8,    KC_9, KC_PSLS,
+        KC_LGUI, EEP_RST,   KC_NO,   RESET,   KC_NO,                                     KC_PMNS,    KC_7,    KC_8,    KC_9, KC_PSLS,
           KC_NO, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                      KC_DOT,    KC_4,    KC_5,    KC_6, KC_PEQL,
           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     KC_PPLS,    KC_1,    KC_2,    KC_3, KC_PAST,
-                   KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO, KC_BSPC,  KC_ENT,            KC_NO, KC_LPRN, KC_RPRN,
-                                                                KC_NO,    KC_0
+                   KC_NO, KC_BTN3, KC_BTN3,           KC_SPC,   KC_NO,  KC_DEL,  KC_ENT,            KC_NO,    KC_0, TD(TD_NUM_PRN),
+                                                                KC_NO, KC_BSPC
 
     ),
     [SYM2] = LAYOUT_3x5_1x2u_2x1u(
@@ -97,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [FUN] = LAYOUT_3x5_1x2u_2x1u(
          KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_SLCK,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-         KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_PSCR,                                       KC_NO,   RESET,   KC_NO,   KC_NO, EEP_RST,
+         KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_PSCR,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
          KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                                       KC_NO, DF(COLEMAK_DH), DF(COLEMAK), DF(QWERTY),   KC_NO,
                    KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO,   KC_NO,   KC_NO,            KC_NO,   KC_NO,   KC_NO,
                                                                 KC_NO,   KC_NO
@@ -441,5 +442,6 @@ void dance_ctl_reset(qk_tap_dance_state_t *state, void *user_data) {
 // All tap dance functions would go here. Only showing this one.
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_CTL_MEDIA] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_ctl_finished, dance_ctl_reset),
+    [TD_NUM_PRN] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN)
 };
 #endif
