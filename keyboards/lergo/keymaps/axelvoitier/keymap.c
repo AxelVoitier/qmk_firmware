@@ -27,29 +27,29 @@ uint16_t gui_tab_timer = 0;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [COLEMAK_DH] = LAYOUT_3x5_1x2u_2x1u(
-               KC_Q ,        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_COLN ,
-        LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_G ,                                                                                  KC_M , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O),
+        LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y , RGUI_T(KC_COLN),
+               KC_A , LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_G ,                                                                                  KC_M , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I),        KC_O ,
                KC_Z ,        KC_X ,        KC_C ,        KC_D ,        KC_V ,                                                                                  KC_K ,        KC_H ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
                       TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(  SYM2, KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
                                                                                                 LT(NUM, KC_TAB), LT(SHORT, KC_BSPC)
     ),
     [COLEMAK] = LAYOUT_3x5_1x2u_2x1u(
-               KC_Q ,        KC_W ,        KC_F ,        KC_P ,        KC_G ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_COLN ,
-        LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_D ,                                                                                  KC_H , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O),
+        LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_G ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y , RGUI_T(KC_COLN),
+               KC_A , LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_D ,                                                                                  KC_H , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I),        KC_O ,
                KC_Z ,        KC_X ,        KC_C ,        KC_V ,        KC_B ,                                                                                  KC_K ,        KC_M ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
                       TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(  SYM2, KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
                                                                                                 LT(NUM, KC_TAB), LT(SHORT, KC_BSPC)
     ),
     [QWERTY] = LAYOUT_3x5_1x2u_2x1u(
-               KC_Q ,        KC_W ,        KC_E ,        KC_R ,        KC_T ,                                                                                  KC_Y ,        KC_U ,        KC_I ,        KC_O ,           KC_P ,
-        LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F),        KC_G ,                                                                                  KC_H , RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN),
+        LGUI_T(KC_Q),        KC_W ,        KC_E ,        KC_R ,        KC_T ,                                                                                  KC_Y ,        KC_U ,        KC_I ,        KC_O ,    RGUI_T(KC_P),
+               KC_A , LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F),        KC_G ,                                                                                  KC_H , RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L),        KC_SCLN ,
                KC_Z,         KC_X ,        KC_C ,        KC_V ,        KC_B ,                                                                                  KC_N ,        KC_M ,     KC_COMM ,      KC_DOT ,        KC_SLSH ,
                      TD(TD_CTL_MEDIA),  KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(  SYM2, KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
                                                                                                 LT(NUM, KC_TAB), LT(SHORT, KC_BSPC)
     ),
     [MEDIA] = LAYOUT_3x5_1x2u_2x1u(
-          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
-        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                       KC_NO, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT,
+        KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+          KC_NO, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                       KC_NO, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT,
           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                    KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO, KC_MUTE, KC_MPLY,            KC_NO,   KC_NO,   KC_NO,
                                                                 KC_NO, KC_MSTP
@@ -64,32 +64,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
     [NAV] = LAYOUT_3x5_1x2u_2x1u(
-          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                       KC_NO, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT,
+        KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+          KC_NO, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                       KC_NO, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT,
           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                      KC_INS, KC_HOME, KC_PGUP, KC_PGDN,  KC_END,
                    KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO,  KC_DEL,  KC_ENT,            KC_NO,   KC_NO,   KC_NO,
                                                                 KC_NO, KC_BSPC
 
     ),
     [NUM] = LAYOUT_3x5_1x2u_2x1u(
-        RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,                                     KC_PMNS,    KC_7,    KC_8,    KC_9, KC_PSLS,
-        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                      KC_DOT,    KC_4,    KC_5,    KC_6, KC_PEQL,
+        KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     KC_PMNS,    KC_7,    KC_8,    KC_9, KC_PSLS,
+          KC_NO, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                      KC_DOT,    KC_4,    KC_5,    KC_6, KC_PEQL,
           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     KC_PPLS,    KC_1,    KC_2,    KC_3, KC_PAST,
                    KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO, KC_BSPC,  KC_ENT,            KC_NO, KC_LPRN, KC_RPRN,
                                                                 KC_NO,    KC_0
 
     ),
     [SYM2] = LAYOUT_3x5_1x2u_2x1u(
-          UC(0xBA),   UC(0xB9),   UC(0xB2),   UC(0xB3),   UC(0xBD), /* º ¹ ² ³ ½ */        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        UC(0x0308), UC(0x0302), UC(0x0300), UC(0x0301), UC(0x0327), /* ̈ ̂ ̀ ́ ̧*/        KC_NO, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI,
+          UC(0xBA),   UC(0xB9),   UC(0xB2),   UC(0xB3),   UC(0xBD), /* º ¹ ² ³ ½ */        KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_RGUI,
+        UC(0x0308), UC(0x0302), UC(0x0300), UC(0x0301), UC(0x0327), /* ̈ ̂ ̀ ́ ̧*/        KC_NO, KC_RSFT, KC_RCTL, KC_RALT,   KC_NO,
           UC(0xBE),   UC(0xB1), UC(0x2126),   UC(0xB5),   UC(0xBC), /* ¾ ± Ω µ ¼ */        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                    KC_NO, KC_BTN3, KC_BTN3,           KC_SPC,  KC_ESC,   KC_NO,  KC_ENT,            KC_NO,   KC_NO,   KC_NO,
                                                                KC_TAB, KC_BSPC
 
     ),
     [SHORT] = LAYOUT_3x5_1x2u_2x1u(
-        C(KC_D), C(KC_F), C(KC_W), C(KC_T), C(KC_F2),                                    RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
-        C(KC_Z), C(KC_X), C(KC_C), C(KC_V), RCS(KC_Z),                                     KC_NO, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI,
+        C(KC_D), C(KC_F), C(KC_W), C(KC_T), C(KC_F2),                                      KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_RGUI,
+        C(KC_Z), C(KC_X), C(KC_C), C(KC_V), RCS(KC_Z),                                     KC_NO, KC_RSFT, KC_RCTL, KC_RALT,   KC_NO,
           KC_NO,   KC_NO, C(KC_A), C(KC_S), C(KC_N),                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                    KC_NO, KC_BTN3, KC_BTN3,           KC_SPC,  KC_ESC,   KC_NO,   KC_NO,            KC_NO,   KC_NO,   KC_NO,
                                                                KC_TAB,   KC_NO
