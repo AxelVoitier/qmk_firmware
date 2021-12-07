@@ -41,9 +41,6 @@
 #define ENCODERS_PAD_A { B5, B5 }
 #define ENCODERS_PAD_B { F4, F5 }
 
-// #define ENCODERS_DIRECTION_FLIP
-// #define ENCODERS_RESOLUTION 4
-
 #define RGB_DI_PIN D3
 // #define DRIVER_LED_TOTAL 73
 
@@ -112,9 +109,9 @@
 
 // https://docs.qmk.fm/#/tap_hold
 #undef TAPPING_TERM
-#define TAPPING_TERM 200
+#define TAPPING_TERM 250
 #define PERMISSIVE_HOLD
-// #define IGNORE_MOD_TAP_INTERRUPT
+#define IGNORE_MOD_TAP_INTERRUPT
 // #define TAPPING_FORCE_HOLD
 
 #define NO_AUTO_SHIFT_ALPHA

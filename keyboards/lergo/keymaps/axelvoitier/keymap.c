@@ -28,14 +28,14 @@ uint16_t gui_tab_timer = 0;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [COLEMAK_DH] = LAYOUT_3x5_1x2u_2x1u(
-        LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y , RGUI_T(KC_COLN),
+        LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_COLN ,
                KC_A , LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_G ,                                                                                  KC_M , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I),        KC_O ,
                KC_Z ,        KC_X ,        KC_C ,        KC_D ,        KC_V ,                                                                                  KC_K ,        KC_H ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
                       TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(SHORT,  KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
                                                                                                 LT(NUM, KC_TAB), LT( SYM2, KC_BSPC)
     ),
     [COLEMAK] = LAYOUT_3x5_1x2u_2x1u(
-        LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_G ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y , RGUI_T(KC_COLN),
+        LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_G ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_COLN ,
                KC_A , LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_D ,                                                                                  KC_H , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I),        KC_O ,
                KC_Z ,        KC_X ,        KC_C ,        KC_V ,        KC_B ,                                                                                  KC_K ,        KC_M ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
                       TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(SHORT,  KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
@@ -204,18 +204,18 @@ void matrix_scan_user(void) {
 #ifdef RGB_MATRIX_ENABLE
 
 led_config_t g_led_config = { {
-    // {  11,   1,  12,  20,  21, NO_LED },
-    {  10,   2,  13,  19,  22}, // NO_LED },
-    {   9,   3,  14,  18,  23}, // NO_LED },
-    {   8,   4,  15,  17,  24}, // NO_LED },
-    {   7,   5, NO_LED, NO_LED,  16}, // NO_LED },
-    {   6, NO_LED, NO_LED, NO_LED, NO_LED}, // NO_LED },
-    // {  34,  44,  45,  54,  59, NO_LED },
-    {  35,  43,  46,  53,  58}, // NO_LED },
-    {  36,  42,  47,  52,  57}, // NO_LED },
-    {  37,  41,  48,  51,  56}, // NO_LED },
-    {  39,  38, NO_LED,  49, 50}, // NO_LED },
-    {  40, NO_LED, NO_LED, NO_LED, NO_LED}, // NO_LED }
+    // {  10,   0,  11,  19,  20, NO_LED },
+    {  9,   1,  12,  18,  21}, // NO_LED },
+    {   8,   2,  13,  17,  22}, // NO_LED },
+    {   7,   3,  14,  16,  23}, // NO_LED },
+    {   6,   4, NO_LED, NO_LED,  15}, // NO_LED },
+    {   5, NO_LED, NO_LED, NO_LED, NO_LED}, // NO_LED },
+    // {  33,  43,  44,  53,  58, NO_LED },
+    {  34,  42,  45,  52,  57}, // NO_LED },
+    {  35,  41,  46,  51,  56}, // NO_LED },
+    {  36,  40,  47,  50,  55}, // NO_LED },
+    {  38,  37, NO_LED,  48, 49}, // NO_LED },
+    {  39, NO_LED, NO_LED, NO_LED, NO_LED}, // NO_LED }
 }, {
     { 60, 0 }, { 60, 13 }, { 60, 26 }, { 60, 38 }, { 90, 51 }, { 105, 64 }, { 105, 51 },
     { 75, 38 }, { 75, 26 }, { 75, 13 }, { 75, 0 }, { 45, 0 }, { 45, 13 }, { 45, 26 }, { 45, 38 },
@@ -282,15 +282,15 @@ bool oled_task_user(void) {
     oled_clear();
 
     switch (get_highest_layer(layer_state)) {
-        case COLEMAK_DH:
-            oled_write_P(PSTR("COLEMAK DH\n"), false);
-            break;
-        case COLEMAK:
-            oled_write_P(PSTR("COLEMAK\n"), false);
-            break;
-        case QWERTY:
-            oled_write_P(PSTR("QWERTY\n"), false);
-            break;
+        // case COLEMAK_DH:
+        //     oled_write_P(PSTR("COLEMAK DH\n"), false);
+        //     break;
+        // case COLEMAK:
+        //     oled_write_P(PSTR("COLEMAK\n"), false);
+        //     break;
+        // case QWERTY:
+        //     oled_write_P(PSTR("QWERTY\n"), false);
+        //     break;
         case MEDIA:
             oled_write_P(PSTR("MEDIA\n"), false);
             break;
@@ -312,9 +312,12 @@ bool oled_task_user(void) {
         case FUN:
             oled_write_P(PSTR("FUN\n"), false);
             break;
+
         default:
-            // Or use the write_ln shortcut over adding '\n' to the end of your string
-            oled_write_ln_P(PSTR("Undefined"), false);
+            if(IS_LAYER_ON_STATE(default_layer_state, COLEMAK))
+                oled_write_P(PSTR("COLEMAK\n"), false);
+            else if(IS_LAYER_ON_STATE(default_layer_state, QWERTY))
+                oled_write_P(PSTR("QWERTY\n"), false);
     }
 
     // // Host Keyboard LED Status
