@@ -121,16 +121,27 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 tap_code(KC_MPRV);
         }
     }else if(layer_state_is(NAV)) {
+        // if(index == 0) {  // Words
+        //     if(clockwise)
+        //         tap_code16(C(KC_LEFT));
+        //     else
+        //         tap_code16(C(KC_RGHT));
+        // }else if(index == 1) {  // Tabs
+        //     if(clockwise)
+        //         tap_code16(C(KC_TAB));
+        //     else
+        //         tap_code16(S(C(KC_TAB)));
+        // }
         if(index == 0) {  // Words
             if(clockwise)
-                tap_code16(C(KC_LEFT));
+                tap_code16(KC_UP);
             else
-                tap_code16(C(KC_RGHT));
-        }else if(index == 1) {  // Tabs
+                tap_code16(KC_DOWN);
+        }else if(index == 1) {  // Words
             if(clockwise)
-                tap_code16(C(KC_TAB));
+                tap_code16(C(KC_RGHT));
             else
-                tap_code16(S(C(KC_TAB)));
+                tap_code16(C(KC_LEFT));
         }
     }else if(layer_state_is(SHORT)) {
         if(index == 0) {  // Search results
