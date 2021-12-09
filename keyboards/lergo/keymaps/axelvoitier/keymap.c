@@ -106,8 +106,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+uint32_t last_pulse = 0;
+uint32_t last_diff = 0;
+
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
+    uint32_t pulse = timer_read32();
+    last_diff = TIMER_DIFF_32(pulse, last_pulse);
+    last_pulse = pulse;
+
     if(layer_state_is(MEDIA)) {
         if(index == 0) {  // Volume
             if(clockwise)
@@ -274,21 +281,21 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 bool oled_task_user(void) {
-    bool diff = false;
-    if(layer_state != oled_states.layer_state) {
-        diff = true;
-        oled_states.layer_state = layer_state;
-    }
-    if(get_mods() != oled_states.mod_state) {
-        diff = true;
-        oled_states.mod_state = get_mods();
-    }
-    if(get_oneshot_mods() != oled_states.os_mod_state) {
-        diff = true;
-        oled_states.os_mod_state = get_oneshot_mods();
-    }
-    if(!diff)
-        return false;
+    // bool diff = false;
+    // if(layer_state != oled_states.layer_state) {
+    //     diff = true;
+    //     oled_states.layer_state = layer_state;
+    // }
+    // if(get_mods() != oled_states.mod_state) {
+    //     diff = true;
+    //     oled_states.mod_state = get_mods();
+    // }
+    // if(get_oneshot_mods() != oled_states.os_mod_state) {
+    //     diff = true;
+    //     oled_states.os_mod_state = get_oneshot_mods();
+    // }
+    // if(!diff)
+    //     return false;
 
     oled_clear();
 
@@ -340,8 +347,8 @@ bool oled_task_user(void) {
     // if(led_state.scroll_lock)
     //     oled_write_P(PSTR("SCR\n"), false);
 
-    uint8_t mod_state = get_mods();
-    uint8_t os_mod_state = get_oneshot_mods();
+    uint8_t mod_state = oled_states.mod_state;
+    uint8_t os_mod_state = oled_states.os_mod_state;
 
     if(mod_state & MOD_MASK_SHIFT)
         oled_write_P(PSTR("SHIFT\n"), false);
@@ -371,6 +378,8 @@ bool oled_task_user(void) {
     else
         oled_write_P(PSTR("\n"), false);
 
+    char buf[10] = {0};
+    oled_write(get_numeric_str(buf, 10, last_diff, ' '), false);
     return false;
 }
 #endif
