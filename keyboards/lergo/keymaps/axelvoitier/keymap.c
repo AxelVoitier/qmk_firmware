@@ -25,11 +25,11 @@ uint16_t gui_tab_timer = 0;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [COLEMAK_DH] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
-               KC_Q ,        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                     KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_COLN ,
+               KC_Q ,        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                     KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_MINS ,
                KC_A ,        KC_R ,        KC_S ,        KC_T ,        KC_G ,                                                     KC_M ,        KC_N ,        KC_E ,        KC_I ,        KC_O ,
                KC_Z ,        KC_X ,        KC_C ,        KC_D ,        KC_V ,                                                     KC_K ,        KC_H ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
             KC_LGUI ,     KC_LCTL ,     KC_LALT ,     KC_LSFT ,                                                                              KC_RSFT ,     KC_RALT ,     KC_RCTL ,     KC_LGUI ,
-                LT(MEDIA, KC_ENT) ,     KC_UNDS ,           LT(SYM1, KC_SPC), LT(NAV, KC_ESC),      LT(FUN,  KC_BSPC), LT(SYM1, KC_ENT),           LT(NAV, KC_EQL) ,      KC_SPC ,
+                LT(MEDIA, KC_ENT) ,     KC_LCTL ,           LT(SYM1, KC_SPC), LT(NAV, KC_ESC),      LT(FUN,  KC_BSPC), LT(SYM1, KC_ENT),                   KC_RCTL ,      KC_SPC ,
                                                                               LT(NUM, KC_TAB),      LT(SYM2,  KC_DEL)
     ),
     [MEDIA] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
@@ -37,16 +37,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT,
           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                          KC_RSFT, KC_RALT, KC_RCTL, KC_LGUI,
-                   KC_NO,  KC_NO ,            KC_NO,   KC_NO,      KC_MUTE, KC_MPLY,            KC_NO,   KC_NO,
+                   KC_NO, KC_LCTL,            KC_NO,   KC_NO,      KC_MUTE, KC_MPLY,          KC_RCTL,   KC_NO,
                                                        KC_NO,      KC_MSTP
 
     ),
     [SYM1] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
-          KC_GRV, KC_TILD, KC_CIRC, KC_HASH,  KC_DLR,                     KC_MINS, KC_ASTR, KC_EXLM,    KC_PERC, KC_SCLN,
-           KC_LT, KC_LCBR, KC_LBRC, KC_LPRN, KC_PIPE,                       KC_NO, KC_RPRN, KC_RBRC,    KC_RCBR,   KC_GT,
-        UC(0xB0),   KC_AT, KC_AMPR,   KC_NO, KC_BSLS,                     KC_PLUS, KC_SLSH, KC_QUES, UC(0x20AC),  KC_DQT,  // ° .... € ...
-         KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                       KC_RSFT, KC_RALT,    KC_RCTL, KC_LGUI,
-                   KC_ENT, KC_UNDS,            KC_NO, KC_ESC,      KC_BSPC, KC_NO,           KC_EQL,     KC_SPC,
+          KC_GRV, KC_TILD, KC_CIRC, KC_PIPE,   KC_NO,                       KC_NO,   KC_NO, KC_EXLM,    KC_PERC, UC(0xB1),
+           KC_LT, KC_LCBR, KC_LBRC, KC_LPRN,   KC_AT,                      KC_EQL, KC_RPRN, KC_RBRC,    KC_RCBR,    KC_GT,
+        UC(0xB0),  KC_DLR, KC_AMPR, KC_HASH, KC_BSLS,                     KC_SLSH,   KC_NO, KC_SCLN,    KC_COLN, UC(0xB1),
+         KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                       KC_RSFT, KC_RALT,    KC_RCTL,  KC_LGUI,
+                   KC_ENT, KC_LCTL,            KC_NO, KC_ESC,      KC_BSPC, KC_NO,          KC_RCTL,     KC_SPC,
                                                       KC_TAB,       KC_DEL
 
     ),
@@ -55,16 +55,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT,
           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                         KC_INS, KC_HOME, KC_PGUP, KC_PGDN,  KC_END,
         KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                          KC_RSFT, KC_RALT, KC_RCTL, KC_LGUI,
-                  KC_ENT,   KC_NO,           KC_SPC,   KC_NO,      KC_BSPC,  KC_ENT,            KC_NO,  KC_SPC,
+                  KC_ENT, KC_LCTL,           KC_SPC,   KC_NO,      KC_BSPC,  KC_ENT,          KC_RCTL,  KC_SPC,
                                                       KC_TAB,       KC_DEL
 
     ),
     [NUM] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
-          KC_NO, EEP_RST,   KC_NO,   RESET,   KC_NO,                          KC_NO,    KC_7,    KC_8,    KC_9,   KC_NO,
-          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_PMNS,    KC_4,    KC_5,    KC_6, KC_PSLS,
-          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_PPLS,    KC_1,    KC_2,    KC_3, KC_PAST,
-        KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                          KC_LPRN,    KC_0, KC_RPRN,  KC_DOT,
-                  KC_ENT, KC_UNDS,           KC_SPC,   KC_NO,      KC_BSPC,  KC_ENT,            KC_EQL, KC_SPC,
+          KC_NO, EEP_RST,   KC_NO,   RESET,   KC_NO,                        KC_PAST,    KC_7,    KC_8,    KC_9, KC_PMNS,
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                         KC_DOT,    KC_4,    KC_5,    KC_6,    KC_0,
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_PSLS,    KC_1,    KC_2,    KC_3, KC_PPLS,
+        KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                            KC_NO,   KC_NO,   KC_NO,   KC_NO,
+                  KC_ENT, KC_LCTL,           KC_SPC,   KC_NO,      KC_BSPC, KC_PEQL,          KC_RCTL,  KC_SPC,
                                                        KC_NO,       KC_DEL
 
     ),
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         UC(0x0308), UC(0x0302), UC(0x0300), UC(0x0301), UC(0x0327), /* ̈ ̂ ̀ ́ ̧*/          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
           UC(0xBE),   UC(0xB1), UC(0x2126),   UC(0xB5),   UC(0xBC), /* ¾ ± Ω µ ¼ */     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         UC(0x2368),    KC_LCTL,    KC_LALT,    KC_LSFT,             /* ⍨ */                    KC_RSFT, KC_RALT, KC_RCTL, KC_LGUI,
-                        KC_ENT,      KC_NO,                 KC_SPC,  KC_ESC, KC_BSPC,  KC_ENT,            KC_NO,  KC_SPC,
+                        KC_ENT,    KC_LCTL,                 KC_SPC,  KC_ESC, KC_BSPC,  KC_ENT,          KC_RCTL,  KC_SPC,
                                                                      KC_TAB,   KC_NO
 
     ),
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_SLCK,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
           KC_NO,   KC_F4,   KC_F5,   KC_F6,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
           KC_NO,   KC_F1,   KC_F2,   KC_F3,                                          KC_RSFT, KC_RALT, KC_RCTL, KC_LGUI,
-                   KC_NO,   KC_NO,            KC_NO,   KC_NO,        KC_NO,   KC_NO,            KC_NO,   KC_NO,
+                   KC_NO, KC_LCTL,            KC_NO,   KC_NO,        KC_NO,   KC_NO,          KC_RCTL,   KC_NO,
                                                        KC_NO,        KC_NO
 
     ),
@@ -91,6 +91,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint32_t last_pulse = 0;
 uint32_t last_diff = 0;
 uint8_t scroll = 0;
+
+#ifdef KEY_OVERRIDE_ENABLE
+const key_override_t base_comma_shift_to_semicolon_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMMA, KC_SEMICOLON, 1 << COLEMAK_DH);
+const key_override_t base_dot_shift_to_colon_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COLON, 1 << COLEMAK_DH);
+const key_override_t num_dot_shift_to_comma_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COMMA, 1 << NUM);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &base_comma_shift_to_semicolon_key_override,
+    &base_dot_shift_to_colon_key_override,
+    &num_dot_shift_to_comma_key_override,
+    NULL // Null terminate the array of overrides!
+};
+#endif
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
