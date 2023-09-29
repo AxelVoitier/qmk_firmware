@@ -6,14 +6,11 @@
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     COLEMAK_DH,
-    COLEMAK,
-    QWERTY,
     MEDIA,
     SYM1,
     NAV,
     NUM,
     SYM2,
-    SHORT,
     FUN,
 };
 
@@ -27,93 +24,83 @@ uint16_t gui_tab_timer = 0;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
-    [COLEMAK_DH] = LAYOUT_3x5_1x2u_2x1u(
-        LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_COLN ,
-               KC_A , LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_G ,                                                                                  KC_M , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I),        KC_O ,
-               KC_Z ,        KC_X ,        KC_C ,        KC_D ,        KC_V ,                                                                                  KC_K ,        KC_H ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
-                      TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(SHORT,  KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
-                                                                                                LT(NUM, KC_TAB), LT( SYM2, KC_BSPC)
+    [COLEMAK_DH] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
+               KC_Q ,        KC_W ,        KC_F ,        KC_P ,        KC_B ,                                                     KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_COLN ,
+               KC_A ,        KC_R ,        KC_S ,        KC_T ,        KC_G ,                                                     KC_M ,        KC_N ,        KC_E ,        KC_I ,        KC_O ,
+               KC_Z ,        KC_X ,        KC_C ,        KC_D ,        KC_V ,                                                     KC_K ,        KC_H ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
+            KC_LGUI ,     KC_LCTL ,     KC_LALT ,     KC_LSFT ,                                                                              KC_RSFT ,     KC_RALT ,     KC_RCTL ,     KC_LGUI ,
+                LT(MEDIA, KC_ENT) ,     KC_UNDS ,           LT(SYM1, KC_SPC), LT(NAV, KC_ESC),      LT(FUN,  KC_BSPC), LT(SYM1, KC_ENT),           LT(NAV, KC_EQL) ,      KC_SPC ,
+                                                                              LT(NUM, KC_TAB),      LT(SYM2,  KC_DEL)
     ),
-    [COLEMAK] = LAYOUT_3x5_1x2u_2x1u(
-        LGUI_T(KC_Q),        KC_W ,        KC_F ,        KC_P ,        KC_G ,                                                                                  KC_J ,        KC_L ,        KC_U ,        KC_Y ,     KC_COLN ,
-               KC_A , LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T),        KC_D ,                                                                                  KC_H , RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I),        KC_O ,
-               KC_Z ,        KC_X ,        KC_C ,        KC_V ,        KC_B ,                                                                                  KC_K ,        KC_M ,     KC_COMM ,      KC_DOT ,     KC_QUOT ,
-                      TD(TD_CTL_MEDIA), KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(SHORT,  KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
-                                                                                                LT(NUM, KC_TAB), LT( SYM2, KC_BSPC)
-    ),
-    [QWERTY] = LAYOUT_3x5_1x2u_2x1u(
-        LGUI_T(KC_Q),        KC_W ,        KC_E ,        KC_R ,        KC_T ,                                                                                  KC_Y ,        KC_U ,        KC_I ,        KC_O ,    RGUI_T(KC_P),
-               KC_A , LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F),        KC_G ,                                                                                  KC_H , RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L),        KC_SCLN ,
-               KC_Z,         KC_X ,        KC_C ,        KC_V ,        KC_B ,                                                                                  KC_N ,        KC_M ,     KC_COMM ,      KC_DOT ,        KC_SLSH ,
-                     TD(TD_CTL_MEDIA),  KC_BTN3 ,     KC_BTN3 ,               LT(SYM1, KC_SPC), LT(NAV, KC_ESC), LT(SHORT,  KC_DEL), LT(SYM1, KC_ENT),                      KC_NO ,     MO(NAV) ,      MO(FUN),
-                                                                                                LT(NUM, KC_TAB), LT( SYM2, KC_BSPC)
-    ),
-    [MEDIA] = LAYOUT_3x5_1x2u_2x1u(
-        KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
-          KC_NO, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                       KC_NO, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT,
-          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                   KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO, KC_MUTE, KC_MPLY,            KC_NO,   KC_NO,   KC_NO,
-                                                                KC_NO, KC_MSTP
+    [MEDIA] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT,
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                          KC_RSFT, KC_RALT, KC_RCTL, KC_LGUI,
+                   KC_NO,  KC_NO ,            KC_NO,   KC_NO,      KC_MUTE, KC_MPLY,            KC_NO,   KC_NO,
+                                                       KC_NO,      KC_MSTP
 
     ),
-    [SYM1] = LAYOUT_3x5_1x2u_2x1u(
-          KC_GRV, KC_TILD, KC_CIRC, KC_HASH,  KC_DLR,                                     KC_MINS, KC_ASTR, KC_EXLM,    KC_PERC, KC_SCLN,
-           KC_LT, KC_LCBR, KC_LBRC, KC_LPRN, KC_PIPE,                                      KC_EQL, KC_RPRN, KC_RBRC,    KC_RCBR,   KC_GT,
-        UC(0xB0),   KC_AT, KC_AMPR, KC_UNDS, KC_BSLS,                                     KC_PLUS, KC_SLSH, KC_QUES, UC(0x20AC),  KC_DQT,  // ° .... € ...
-                    KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO,  KC_DEL,  KC_ENT,            KC_NO,   KC_NO,      KC_NO,
-                                                                 KC_NO, KC_BSPC
+    [SYM1] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
+          KC_GRV, KC_TILD, KC_CIRC, KC_HASH,  KC_DLR,                     KC_MINS, KC_ASTR, KC_EXLM,    KC_PERC, KC_SCLN,
+           KC_LT, KC_LCBR, KC_LBRC, KC_LPRN, KC_PIPE,                       KC_NO, KC_RPRN, KC_RBRC,    KC_RCBR,   KC_GT,
+        UC(0xB0),   KC_AT, KC_AMPR,   KC_NO, KC_BSLS,                     KC_PLUS, KC_SLSH, KC_QUES, UC(0x20AC),  KC_DQT,  // ° .... € ...
+         KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                       KC_RSFT, KC_RALT,    KC_RCTL, KC_LGUI,
+                   KC_ENT, KC_UNDS,            KC_NO, KC_ESC,      KC_BSPC, KC_NO,           KC_EQL,     KC_SPC,
+                                                      KC_TAB,       KC_DEL
 
     ),
-    [NAV] = LAYOUT_3x5_1x2u_2x1u(
-        KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-          KC_NO, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                       KC_NO, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT,
-          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                      KC_INS, KC_HOME, KC_PGUP, KC_PGDN,  KC_END,
-                   KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO,  KC_DEL,  KC_ENT,            KC_NO,   KC_NO,   KC_NO,
-                                                                KC_NO, KC_BSPC
+    [NAV] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT,
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                         KC_INS, KC_HOME, KC_PGUP, KC_PGDN,  KC_END,
+        KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                          KC_RSFT, KC_RALT, KC_RCTL, KC_LGUI,
+                  KC_ENT,   KC_NO,           KC_SPC,   KC_NO,      KC_BSPC,  KC_ENT,            KC_NO,  KC_SPC,
+                                                      KC_TAB,       KC_DEL
 
     ),
-    [NUM] = LAYOUT_3x5_1x2u_2x1u(
-        KC_LGUI, EEP_RST,   KC_NO,   RESET,   KC_NO,                                     KC_PMNS,    KC_7,    KC_8,    KC_9, KC_PSLS,
-          KC_NO, KC_LALT, KC_LCTL, KC_LSFT,   KC_NO,                                      KC_DOT,    KC_4,    KC_5,    KC_6, KC_PEQL,
-          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                     KC_PPLS,    KC_1,    KC_2,    KC_3, KC_PAST,
-                   KC_NO, KC_BTN3, KC_BTN3,           KC_SPC,   KC_NO,  KC_DEL,  KC_ENT,            KC_NO,    KC_0, TD(TD_NUM_PRN),
-                                                                KC_NO, KC_BSPC
+    [NUM] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
+          KC_NO, EEP_RST,   KC_NO,   RESET,   KC_NO,                          KC_NO,    KC_7,    KC_8,    KC_9,   KC_NO,
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_PMNS,    KC_4,    KC_5,    KC_6, KC_PSLS,
+          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_PPLS,    KC_1,    KC_2,    KC_3, KC_PAST,
+        KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT,                                          KC_LPRN,    KC_0, KC_RPRN,  KC_DOT,
+                  KC_ENT, KC_UNDS,           KC_SPC,   KC_NO,      KC_BSPC,  KC_ENT,            KC_EQL, KC_SPC,
+                                                       KC_NO,       KC_DEL
 
     ),
-    [SYM2] = LAYOUT_3x5_1x2u_2x1u(
-          UC(0xBA),   UC(0xB9),   UC(0xB2),   UC(0xB3),   UC(0xBD), /* º ¹ ² ³ ½ */        KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_RGUI,
-        UC(0x0308), UC(0x0302), UC(0x0300), UC(0x0301), UC(0x0327), /* ̈ ̂ ̀ ́ ̧*/        KC_NO, KC_RSFT, KC_RCTL, KC_RALT,   KC_NO,
-          UC(0xBE),   UC(0xB1), UC(0x2126),   UC(0xB5),   UC(0xBC), /* ¾ ± Ω µ ¼ */        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                   KC_NO, KC_BTN3, KC_BTN3,           KC_SPC,  KC_ESC,   KC_NO,  KC_ENT,            KC_NO,   KC_NO,   KC_NO,
-                                                               KC_TAB, KC_BSPC
+    [SYM2] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
+          UC(0xBA),   UC(0xB9),   UC(0xB2),   UC(0xB3),   UC(0xBD), /* º ¹ ² ³ ½ */     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        UC(0x0308), UC(0x0302), UC(0x0300), UC(0x0301), UC(0x0327), /* ̈ ̂ ̀ ́ ̧*/          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+          UC(0xBE),   UC(0xB1), UC(0x2126),   UC(0xB5),   UC(0xBC), /* ¾ ± Ω µ ¼ */     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        UC(0x2368),    KC_LCTL,    KC_LALT,    KC_LSFT,             /* ⍨ */                    KC_RSFT, KC_RALT, KC_RCTL, KC_LGUI,
+                        KC_ENT,      KC_NO,                 KC_SPC,  KC_ESC, KC_BSPC,  KC_ENT,            KC_NO,  KC_SPC,
+                                                                     KC_TAB,   KC_NO
 
     ),
-    [SHORT] = LAYOUT_3x5_1x2u_2x1u(
-        C(KC_D), C(KC_F), C(KC_W), C(KC_T),    KC_F2 ,                                     KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_RGUI,
-        C(KC_Z), C(KC_X), C(KC_C), C(KC_V), RCS(KC_Z),                                     KC_NO, KC_RSFT, KC_RCTL, KC_RALT,   KC_NO,
-          KC_NO,   KC_NO, C(KC_A), C(KC_S), C(KC_N),                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                   KC_NO, KC_BTN3, KC_BTN3,           KC_SPC,  KC_ESC,   KC_NO,   KC_NO,            KC_NO,   KC_NO,   KC_NO,
-                                                               KC_TAB,   KC_NO
-
-    ),
-    [FUN] = LAYOUT_3x5_1x2u_2x1u(
-         KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_SLCK,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-         KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_PSCR,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-         KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                                       KC_NO, DF(COLEMAK_DH), DF(COLEMAK), DF(QWERTY),   KC_NO,
-                   KC_NO, KC_BTN3, KC_BTN3,            KC_NO,   KC_NO,   KC_NO,   KC_NO,            KC_NO,   KC_NO,   KC_NO,
-                                                                KC_NO,   KC_NO
+    [FUN] = LAYOUT_3x5_1x4_1x2_2u_2x1u(
+        KC_PAUS,  KC_F10,  KC_F11,  KC_F12,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_SLCK,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+          KC_NO,   KC_F4,   KC_F5,   KC_F6,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+          KC_NO,   KC_F1,   KC_F2,   KC_F3,                                          KC_RSFT, KC_RALT, KC_RCTL, KC_LGUI,
+                   KC_NO,   KC_NO,            KC_NO,   KC_NO,        KC_NO,   KC_NO,            KC_NO,   KC_NO,
+                                                       KC_NO,        KC_NO
 
     ),
 };
 
 uint32_t last_pulse = 0;
 uint32_t last_diff = 0;
+uint8_t scroll = 0;
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
+    uint8_t i;
     uint32_t pulse = timer_read32();
     last_diff = TIMER_DIFF_32(pulse, last_pulse);
     last_pulse = pulse;
+    scroll = 100 / last_diff;
+    if(scroll < 1)
+        scroll = 1;
 
     if(layer_state_is(MEDIA)) {
         if(index == 0) {  // Volume
@@ -175,10 +162,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     }else{
         if(index == 0) {  // Vertical scrolling
-            if(clockwise)
-                tap_code(KC_MS_WH_UP);
-            else
-                tap_code(KC_MS_WH_DOWN);
+            if(clockwise) {
+                for(i=0 ; i < scroll ; i++)
+                    tap_code(KC_MS_WH_UP);
+            }else {
+                for(i=0 ; i < scroll ; i++)
+                    tap_code(KC_MS_WH_DOWN);
+            }
         }else if(index == 1) {  // Horizontal scrolling
             if(clockwise)
                 tap_code(KC_MS_WH_RIGHT);
@@ -281,33 +271,27 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 bool oled_task_user(void) {
-    // bool diff = false;
-    // if(layer_state != oled_states.layer_state) {
-    //     diff = true;
-    //     oled_states.layer_state = layer_state;
-    // }
-    // if(get_mods() != oled_states.mod_state) {
-    //     diff = true;
-    //     oled_states.mod_state = get_mods();
-    // }
-    // if(get_oneshot_mods() != oled_states.os_mod_state) {
-    //     diff = true;
-    //     oled_states.os_mod_state = get_oneshot_mods();
-    // }
-    // if(!diff)
-    //     return false;
+    bool diff = false;
+    if(layer_state != oled_states.layer_state) {
+        diff = true;
+        oled_states.layer_state = layer_state;
+    }
+    if(get_mods() != oled_states.mod_state) {
+        diff = true;
+        oled_states.mod_state = get_mods();
+    }
+    if(get_oneshot_mods() != oled_states.os_mod_state) {
+        diff = true;
+        oled_states.os_mod_state = get_oneshot_mods();
+    }
+    if(!diff)
+        return false;
 
     oled_clear();
 
     switch (get_highest_layer(layer_state)) {
         // case COLEMAK_DH:
         //     oled_write_P(PSTR("COLEMAK DH\n"), false);
-        //     break;
-        // case COLEMAK:
-        //     oled_write_P(PSTR("COLEMAK\n"), false);
-        //     break;
-        // case QWERTY:
-        //     oled_write_P(PSTR("QWERTY\n"), false);
         //     break;
         case MEDIA:
             oled_write_P(PSTR("MEDIA\n"), false);
@@ -324,18 +308,13 @@ bool oled_task_user(void) {
         case SYM2:
             oled_write_P(PSTR("SYM2\n"), false);
             break;
-        case SHORT:
-            oled_write_P(PSTR("SHORT\n"), false);
-            break;
         case FUN:
             oled_write_P(PSTR("FUN\n"), false);
             break;
 
-        default:
-            if(IS_LAYER_ON_STATE(default_layer_state, COLEMAK))
-                oled_write_P(PSTR("COLEMAK\n"), false);
-            else if(IS_LAYER_ON_STATE(default_layer_state, QWERTY))
-                oled_write_P(PSTR("QWERTY\n"), false);
+        // default:
+        //     if(IS_LAYER_ON_STATE(default_layer_state, COLEMAK))
+        //         oled_write_P(PSTR("COLEMAK\n"), false);
     }
 
     // // Host Keyboard LED Status
@@ -378,8 +357,10 @@ bool oled_task_user(void) {
     else
         oled_write_P(PSTR("\n"), false);
 
-    char buf[10] = {0};
-    oled_write(get_numeric_str(buf, 10, last_diff, ' '), false);
+    // char buf[10] = {0};
+    // oled_write(get_numeric_str(buf, 10, last_diff, ' '), false);
+    // oled_write_P(PSTR("\n"), false);
+    // oled_write(get_numeric_str(buf, 10, scroll, ' '), false);
     return false;
 }
 #endif
