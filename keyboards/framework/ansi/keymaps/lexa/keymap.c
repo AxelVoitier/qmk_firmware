@@ -10,6 +10,8 @@ enum _layers {
   _FRA,
   _NAV,
   _NUM,
+  _RHS,
+  _LHS,
 //   _FN,
 //   _FN_LOCK,
 //   _FM
@@ -46,6 +48,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,          KC_X,    KC_C,    KC_D,    KC_V,    KC_Z,    XXXXXXX, KC_K,    KC_H,    KC_COMM, KC_DOT,           KC_RSFT,
         KC_LALT, KC_LGUI, MO(_NUM),MO(_NAV),         SFT_T(KC_SPC),             KC_RSFT, LT(_SYM, KC_ENT),XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
+    [_RHS] = LAYOUT(
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, _______,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, _______,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______,          _______,
+        _______,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______,          _______,
+        _______, _______, _______, _______,          _______,                   _______, _______, _______, _______, _______, _______
+    ),
+    [_LHS] = LAYOUT(
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+        _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,
+        _______,          _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,
+        _______, _______, _______, _______,          _______,                   _______, _______, _______, _______, _______, _______
+    ),
     [_SYM] = LAYOUT(
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
@@ -67,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
         _______, RGB_MOD, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, XXXXXXX, KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX, XXXXXXX, XXXXXXX,
         _______, RGB_RMOD,QK_RBT,  XXXXXXX, RGB_TOG, XXXXXXX, XXXXXXX, KC_WRLF, KC_LEFT, KC_DOWN, KC_RGHT, KC_WRRH,          _______,
-        _______,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_WRLF, XXXXXXX, KC_WRRH,          _______,
+        _______,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_WRLF, KC_DOWN, KC_WRRH,          _______,
         _______, _______, XXXXXXX, _______,          _______,                   _______, KC_ENT,  _______, _______, _______, _______
     ),
     [_NUM] = LAYOUT(
@@ -168,25 +186,34 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (get_highest_layer(layer_state) > 0) {
         uint8_t layer = get_highest_layer(layer_state);
 
-        // Layer debug
-        // uint8_t n1 = 15;
-        // uint8_t n2 = 13;
-        // uint8_t n3 = 12;
-        // uint8_t n4 = 11;
-        // switch(layer) {
-        //     case 1:
-        //         rgb_matrix_set_color(n1, RGB_AZURE);
-        //         break;
-        //     case 2:
-        //         rgb_matrix_set_color(n2, RGB_AZURE);
-        //         break;
-        //     case 3:
-        //         rgb_matrix_set_color(n3, RGB_AZURE);
-        //         break;
-        //     case 4:
-        //         rgb_matrix_set_color(n4, RGB_AZURE);
-        //         break;
-        // }
+        // Layer indicator
+        // TODO: just do with an array
+        uint8_t n1 = 15;
+        uint8_t n2 = 13;
+        uint8_t n3 = 12;
+        uint8_t n4 = 11;
+        uint8_t n5 = 9;
+        uint8_t n6 = 14;
+        switch(layer) {
+            case 1:
+                rgb_matrix_set_color(n1, RGB_AZURE);
+                break;
+            case 2:
+                rgb_matrix_set_color(n2, RGB_AZURE);
+                break;
+            case 3:
+                rgb_matrix_set_color(n3, RGB_AZURE);
+                break;
+            case 4:
+                rgb_matrix_set_color(n4, RGB_AZURE);
+                break;
+            case 5:
+                rgb_matrix_set_color(n5, RGB_AZURE);
+                break;
+            case 6:
+                rgb_matrix_set_color(n6, RGB_AZURE);
+                break;
+        }
 
         for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
             for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
@@ -202,3 +229,52 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     return false;
 }
 #endif
+
+
+// From https://www.reddit.com/r/olkb/comments/8mxpdp/qmk_code_to_enforce_correct_shift_key_usage/
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        switch (keycode) {
+            // Left shift has just been pressed. Kill all left alphas.
+            case KC_LSFT:
+            case SFT_T(KC_SPC):
+                layer_on(_RHS);
+                break;
+
+            // Right shift has just been pressed. Kill all right alphas.
+            case KC_RSFT:
+                layer_on(_LHS);
+                break;
+
+            // Punitive layers can't be cancelled by a no-op key. This prevents
+            // user from hitting key again to get the letter.
+            case KC_NO:
+                break;
+
+            // Undo any punitive layers once any other key has been pressed.
+            // This allows user to enter a sequence of shifted keys without
+            // having to alternate between left and right shift. For example,
+            // when typing "UPS". Too short to warrant CAPS LOCK use, but would
+            // require using both shift keys if we didn't remove the blockade
+            // on the "wrong" side of the board.
+            default:
+                layer_off(_RHS);
+                layer_off(_LHS);
+                break;
+        }
+    } else {
+        switch (keycode) {
+            case KC_NO:
+                break;
+
+            // Make sure punitive layers are released if user pressed a
+            // shift key, but changed their mind and decided to not shift
+            // anything at all
+            default:
+                layer_off(_RHS);
+                layer_off(_LHS);
+                break;
+        }
+    }
+    return true;
+}
