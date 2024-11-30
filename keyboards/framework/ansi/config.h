@@ -15,3 +15,5 @@
 // Limit current to ensure max current draw is just about 500mA
 // when white att 100% brightness
 #define ISSI_GLOBALCURRENT  104
+
+#define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
