@@ -1,12 +1,14 @@
-# handywork/5x3_mods_nav
+# HandyWork 5x3 + Mods + Nav
 
-![handywork/5x3_mods_nav](imgur.com image replace me!)
+![handywork/5x3_mods_nav](https://raw.githubusercontent.com/AxelVoitier/keebs/refs/heads/main/Framework/HandyWork-5x3-with-mods-with-nav/HandyWork-5x3-with-mods-with-nav-keymap-full.png)
 
-*A short description of the keyboard/project*
+HandyWork mimics a split ergo but as a unibody fitting on the Framework 16 using One Key Modules
 
-* Keyboard Maintainer: [Axel Voitier](https://github.com/Axel Voitier)
-* Hardware Supported: *The PCBs, controllers supported*
-* Hardware Availability: *Links to where you can find this hardware*
+The 5x3 + Mods + Nav variant has 46 keys: 5 columns * 3 rows core keys, plus 3 thumb keys, plus 3 extra keys for modifiers, per hand. Plus 4 dedicated keys for a navigation cluster in the middle.
+
+* Keyboard Maintainer: [Axel Voitier](https://github.com/Axel%20Voitier)
+* Hardware Supported: HandyWork keyboards, made to fit on Framework 16 laptops, using a RP2040 microcontroller, and One Key Modules
+* Hardware Availability: [PCB ordering directions](https://github.com/AxelVoitier/keebs/releases/tag/HandyWork-5x3-Mods-Nav-v1A)
 
 Make example for this keyboard (after setting up your build environment):
 
