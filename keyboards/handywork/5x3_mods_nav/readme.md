@@ -24,7 +24,6 @@ See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_to
 
 Enter the bootloader in 3 ways:
 
-* **Keycode in layout**: Press the key mapped to `QK_BOOT` (should be the `B` key on the num layer for layouts that have
-  it on the left side (eg. qwerty, colemak))
-* **Bootmagic reset**: Hold down the outer left thumb key and plug in the keyboard
+* **Keycode in layout**: Press the key mapped to `QK_BOOT` (should be the `B` key on the num layer for layouts that have it on the left side (eg. qwerty, colemak))
+* **Bootmagic reset**: Hold down the outer left thumb key and plug in the keyboard
 * **Physical reset button**: If you power it off the laptop itself, you can briefly press the button `SW2` on the back of the PCB
