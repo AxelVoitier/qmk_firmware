@@ -25,9 +25,9 @@
                                              "XXXXXXX", "KC_SPC",  "KC_TAB",             "KC_ENT", "_______", "XXXXXXX"                                  
         ],
         [
-            "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX",                                  "KC_ASTR", "KC_7",   "KC_8",    "KC_9",    "KC_MINS", 
-            "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX",            "_______",            "KC_DOT",  "KC_4",   "KC_5",    "KC_6",    "KC_0",    
-            "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "_______", "_______", "_______", "KC_SLSH", "KC_1",   "KC_2",    "KC_3",    "KC_PLUS", 
+            "LM_ON",   "LM_NEXT", "LM_BRIU", "LM_SPDU", "XXXXXXX",                                  "KC_ASTR", "KC_7",   "KC_8",    "KC_9",    "KC_MINS", 
+            "LM_TOGG", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX",            "_______",            "KC_DOT",  "KC_4",   "KC_5",    "KC_6",    "KC_0",    
+            "LM_OFF",  "LM_PREV", "LM_BRID", "LM_SPDD", "QK_BOOT", "_______", "_______", "_______", "KC_SLSH", "KC_1",   "KC_2",    "KC_3",    "KC_PLUS", 
             "_______", "_______", "_______",                                                                             "_______", "_______", "_______", 
                                              "KC_ESC",  "KC_SPC",  "XXXXXXX",            "KC_ENT",  "KC_EQL",  "KC_DEL"                                  
         ],
