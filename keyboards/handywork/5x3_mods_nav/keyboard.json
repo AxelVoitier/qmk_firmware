@@ -31,7 +31,9 @@
         "sleep": true,
         "default": {
             "on": true,
-            "animation": "band_spiral"
+            "animation": "wave_left_right",
+            "val": 255,
+            "speed":  75
         },
         "animations": {
             "solid": true,
@@ -471,7 +473,8 @@
                 "y": 63,
                 "flags": 4
             }
-        ]
+        ],
+        "max_brightness": 255
     },
     "diode_direction": "ROW2COL",
     "matrix_pins": {
